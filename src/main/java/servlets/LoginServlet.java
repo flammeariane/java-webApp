@@ -77,7 +77,7 @@ public class LoginServlet extends HttpServlet {
 
     private boolean authenticate(String username, String password) {
         // Simulation de l'API
-        return "acc".equals(username) && "password".equals(password);
+        return "med".equals(username) && "password".equals(password);
     }
 
     private String getUserRole(String username) {
@@ -85,7 +85,7 @@ public class LoginServlet extends HttpServlet {
         switch (username.toLowerCase()) {
             case "admin":
                 return "responsable générale";
-            case "medecin":
+            case "med":
                 return "médecin";
             case "acc":
                 return "acceuillant entrée";
