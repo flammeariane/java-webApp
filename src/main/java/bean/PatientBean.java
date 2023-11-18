@@ -5,7 +5,7 @@ public class PatientBean {
     
     private String nom;
     private String prenom;
-    private String numRegNat;
+    private String numeroNational;
     private String heureRendezVous;
 
     public PatientBean() {
@@ -14,7 +14,7 @@ public class PatientBean {
     public PatientBean(String nom, String prenom, String numRegNat, String heureRendezVous) {
         this.nom = nom;
         this.prenom = prenom;
-        this.numRegNat = numRegNat;
+        this.numeroNational = numRegNat;
         this.heureRendezVous = heureRendezVous;
     }
 
@@ -34,12 +34,12 @@ public class PatientBean {
         this.prenom = prenom;
     }
 
-    public String getNumRegNat() {
-        return numRegNat;
+    public String getNumeroNational() {
+        return numeroNational;
     }
 
-    public void setNumRegNat(String numRegNat) {
-        this.numRegNat = numRegNat;
+    public void setNumeroNational(String numeroNational) {
+        this.numeroNational = numeroNational;
     }
 
     public String getHeureRendezVous() {
@@ -52,7 +52,7 @@ public class PatientBean {
 
     @Override
     public String toString() {
-        return "PatientBean{" + "nom=" + nom + ", prenom=" + prenom + ", numRegNat=" + numRegNat + ", heureRendezVous=" + heureRendezVous + '}';
+        return "PatientBean{" + "nom=" + nom + ", prenom=" + prenom + ", numRegNat=" + numeroNational + ", heureRendezVous=" + heureRendezVous + '}';
     }
     
 }

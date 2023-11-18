@@ -8,43 +8,43 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.PatientLogin;
+import model.service.PatientService;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
+    
+    
+    private PatientService patientService = new PatientService();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // Exemple de redirection si l'utilisateur est déjà connecté
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("username") != null) {
-            String userRole = (String) session.getAttribute("role");
-            redirectToDashboard(userRole, request, response);
-        } else {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String numeroNational = request.getParameter("numeroNational");
+        String codeSecret = request.getParameter("codeSecret");
+
+        try {
+            PatientLogin patient = patientService.loginPatient(numeroNational, codeSecret);
+            if (patient != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("patient", patient);
+                request.getRequestDispatcher("/WEB-INF/dashboard_patient.jsp").forward(request, response);
+                
+            } else {
+                request.setAttribute("errorMessage", "Identifiants incorrects");
+                request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+            }
+        } catch (Exception e) {
+            request.setAttribute("errorMessage", "Erreur de connexion au serveur");
             request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+  
         }
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // Logique d'authentification
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        if (authenticate(username, password)) {
-            String userRole = getUserRole(username);
-
-            HttpSession session = request.getSession();
-            session.setAttribute("username", username);
-            session.setAttribute("role", userRole);
-
-            redirectToDashboard(userRole, request, response);
-        } else {
-            request.setAttribute("errorMessage", "Invalid username or password");
-            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-        }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
+
 
  private void redirectToDashboard(String userRole, HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {

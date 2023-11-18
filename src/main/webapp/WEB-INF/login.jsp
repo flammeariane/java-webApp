@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Login patient</title>
   <%@ include file="/WEB-INF/bootstrap.jsp" %>
 
 </head>
@@ -17,12 +17,12 @@
                         <h4 class="card-title">Login</h4>
                         <form action="login" method="post">
                             <div class="form-group">
-                                <label for="username">Username:</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
+                                <label for="numeroNational">Username:</label>
+                                <input type="text" class="form-control" id="numeroNational" name="numeroNational" required>
                             </div>
                             <div class="form-group">
-                                <label for="password">Password:</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                                <label for="codeSecret">Password:</label>
+                                <input type="password" class="form-control" id="codeSecret" name="codeSecret" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
