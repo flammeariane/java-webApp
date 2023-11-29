@@ -23,21 +23,24 @@ public class LoginProfessionnelServlet extends HttpServlet {
             if (membre != null) {
                 String role = membre.getRole();
                 switch (role) {
-                    case "infirmier":
+                    case "Infirmier":
                     case "Medecin":
-                        response.sendRedirect("dashboard_medecin.jsp");
+                         request.getRequestDispatcher("/WEB-INF/dashboard_medecin.jsp").forward(request, response);
+                      
                         break;
-                    case "accueillant entrée":
-                    case "accueillant sortie":
-                        response.sendRedirect("dashboardAccueillant");
+                    case "Accueillant en entree":
+                    case "Accueillant de sortie":
+                        request.getRequestDispatcher("/WEB-INF/dashboard_acceuillant.jsp").forward(request, response);
+                        
                         break;
-                    case "responsable centre":
-                    case "responsable générale":
-                        response.sendRedirect("dashboard_responsable.jsp");
+                    case "Responsable de centre":
+                    case "Responsable generale":
+                        request.getRequestDispatcher("/WEB-INF/dashboard_responsable.jsp").forward(request, response);
+                   
                         break;
                     default:
             
-                        response.sendRedirect("login_pro.jsp"); // Rediriger vers la page de login avec un message d'erreur
+                        request.getRequestDispatcher("/WEB-INF/login_pro.jsp").forward(request, response); // Rediriger vers la page de login avec un message d'erreur
                         break;
                 }
             } else {

@@ -1,8 +1,7 @@
 package servlets;
 
-import bean.PatientBean;
+
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,9 +22,9 @@ public class AccueillantServlet extends HttpServlet {
             request.setAttribute("username", username);
         }
         PatientService patientService = new PatientService();
-        List<PatientBean> patients = patientService.getListeDesPatientsDuJour();
+       // List<PatientBean> patients = patientService.getListeDesPatientsDuJour();
 
-        request.setAttribute("patients", patients);
+       // request.setAttribute("patients", patients);
 
         request.getRequestDispatcher("/WEB-INF/dashboard_acceuillant.jsp").forward(request, response);
 

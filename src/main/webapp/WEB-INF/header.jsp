@@ -6,13 +6,13 @@
         <style>
             #header {
                 background: url('static/img/banner1.jpg') no-repeat center center;
-            
+
                 background-size: cover;
                 background-position: top;
                 color: black;
-                text-align: center; /* Garde le titre centré */
+                text-align: center;
                 padding: 5rem 0;
-                position: relative; /* Position relative pour le bouton */
+                position: relative;
             }
 
             #header h1 {
@@ -20,13 +20,11 @@
                 margin: 0;
                 font-size: 2.5em;
             }
-            
-  
 
             .logout-button {
-                position: absolute; /* Position absolue pour le bouton */
-                bottom: 10px; /* Marge du bas */
-                right: 10px; /* Marge de droite */
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
             }
         </style>
     </head>
@@ -37,7 +35,7 @@
             <form action="logout" method="post" class="logout-button">
                 <button type="submit" class="btn btn-danger">Déconnexion</button>
             </form>
-             <p class="">Nous somme ouvert tous les jours de 09h00 à 17h00</p>
+            <p class="">Nous somme ouvert tous les jours de 09h00 à 17h00</p>
         </div>
 
     </body>

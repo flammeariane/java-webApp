@@ -2,7 +2,6 @@ package servlets;
 
 import java.io.IOException;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.PatientLogin;
 import model.service.PatientService;
-import bean.RendezVousBean;
+import model.CentreVaccination;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
@@ -28,9 +27,9 @@ public class LoginServlet extends HttpServlet {
             if (patient != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("patient", patient);
-             List<RendezVousBean> rendezVousList = patientService.getListeDesRendezVousDuPatient();
-              request.setAttribute("rendezVousList", rendezVousList); 
-           
+                // Récupérer les informations des centres
+                List<CentreVaccination> centres = patientService.getCentresVaccination();
+                request.setAttribute("centres", centres);
 
                 request.getRequestDispatcher("/WEB-INF/dashboard_patient.jsp").forward(request, response);
 
@@ -39,6 +38,8 @@ public class LoginServlet extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             }
         } catch (Exception e) {
+             e.printStackTrace(); 
+           
             request.setAttribute("errorMessage", "Erreur de connexion au serveur");
             request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
 

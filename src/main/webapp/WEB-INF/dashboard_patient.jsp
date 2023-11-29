@@ -28,49 +28,36 @@
                     <p class="card-text">Date de Naissance: ${patient.dateNaissance}</p>
                     <p class="card-text">Email: ${patient.email}</p>
 
-
-
-
-                    <h6>Liste des Rendez-vous:</h6>
-                    <ul>
-                        <c:forEach var="rdv" items="${patient.listeRendezVous}">
-                            <li>Date du rendez-vous: ${rdv.date}</li>
-                            <li>Heure du rendez-vous: ${rdv.heure}</li>
-                            <!-- Ajoutez d'autres propriétés du rendez-vous selon votre modèle -->
-                        </c:forEach>
-                    </ul>
                 </div>
             </div>
+                    
+                        <!-- Liste des centres de vaccination -->
+    <c:if test="${not empty centres}">
+        <h3>Centres de Vaccination Proches</h3>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <!-- TODO Entêtes de tableau -->
+                </thead>
+                <tbody>
+                    <c:forEach var="centre" items="${centres}">
+                        <tr>
+                            <td>${centre.nomCentre}</td>
+                            <td>${centre.adresse} ${centre.numero}</td>
+                            <td>${centre.heureOuverture} - ${centre.heureFermeture}</td>
+                            <td>${centre.jourSemaineOuverture}</td>
+                         
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </c:if>
 
-            <c:if test="${not empty centres}">
-                <h3>Centres de Vaccination Proches</h3>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Nom du Centre</th>
-                                <th>Adresse</th>
-                                <th>Heure d'Ouverture</th>
-                                <th>Vaccin Proposé</th>
-                                <!-- Autres en-têtes de colonne selon les données disponibles -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach var="centre" items="${centres}">
-                                <tr>
-                                    <td>${centre.nom}</td>
-                                    <td>${centre.adresse}</td>
-                                    <td>${centre.heureOuverture}</td>
-                                    <td>${centre.vaccin}</td>
-                                    <!-- Autres cellules de données selon les informations disponibles -->
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
-                </div>
-            </c:if>
+      
         </div>
 
         <%@ include file="footer.jsp" %>
+
     </body>
 </html>

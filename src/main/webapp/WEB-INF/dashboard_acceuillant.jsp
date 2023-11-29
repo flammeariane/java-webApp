@@ -13,7 +13,7 @@
             }
             .edit-icon {
                 cursor: pointer;
-                color: #007bff; /* Bootstrap primary color */
+                color: #007bff; 
             }
         </style>
     </head>

@@ -11,6 +11,24 @@ public class CentreVaccination {
         private String numero ;
         private String telephone ;
         private String jourSemaineOuverture ;
+        private String heureFermeture;
+
+    public String getHeureFermeture() {
+        return heureFermeture;
+    }
+
+    public void setHeureFermeture(String heureFermeture) {
+        this.heureFermeture = heureFermeture;
+    }
+
+    public String getHeureOuverture() {
+        return heureOuverture;
+    }
+
+    public void setHeureOuverture(String heureOuverture) {
+        this.heureOuverture = heureOuverture;
+    }
+        private String heureOuverture;
 
     public String getNomCentre() {
         return nomCentre;
@@ -59,22 +77,4 @@ public class CentreVaccination {
     public void setJourSemaineOuverture(String jourSemaineOuverture) {
         this.jourSemaineOuverture = jourSemaineOuverture;
     }
-
-    public Time getHeureFermeture() {
-        return heureFermeture;
-    }
-
-    public void setHeureFermeture(Time heureFermeture) {
-        this.heureFermeture = heureFermeture;
-    }
-
-    public Time getHeureOuverture() {
-        return heureOuverture;
-    }
-
-    public void setHeureOuverture(Time heureOuverture) {
-        this.heureOuverture = heureOuverture;
-    }
-        private Time heureFermeture ;
-        private Time heureOuverture ;
 }

@@ -67,7 +67,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
         <script>
-            // Ajouter les scripts nécessaires pour la gestion des commentaires
+            // TODO Ajouter les scripts  pour la gestion des commentaires
         </script>
     </body>
 </html>

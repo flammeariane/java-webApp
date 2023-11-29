@@ -24,7 +24,7 @@ public class ProfessionnelService {
         String requestBody = objectMapper.writeValueAsString(loginData);
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/Centre_vaccination_SGBD/LoginPersonnel"))
+                .uri(URI.create("http://localhost:8080/Centre_vaccination_SGBD/loginPersonnel"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody))
                 .build();
@@ -35,7 +35,7 @@ public class ProfessionnelService {
             // Suppose que l'API renvoie les détails du patient en cas de succès
             return objectMapper.readValue(response.body(), MembrePersonnel.class);
         } else {
-            // En cas d'échec, renvoie null ou gère selon les besoins de votre application
+        
             return null;
         }
     }
